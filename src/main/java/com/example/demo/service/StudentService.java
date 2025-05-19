@@ -52,16 +52,17 @@ public class StudentService {
 		 studentRepo.deleteById(studentId);
 	 }
 	
-	 public StudentDto updateStudent(long id, Student updatedStudentData) {
-		    Student existingStudent = studentRepo.findById(id).orElse(null);
-		      
-		    existingStudent.setName(updatedStudentData.getName());
-		    existingStudent.setDept(updatedStudentData.getDept());
-		    existingStudent.setDob(updatedStudentData.getDob());
+	 public StudentDto updateStudent(long id, StudentDto updatedStudentDto) {
+		 Student existingStudent = studentRepo.findById(id).orElse(null);
 
-		    Student updated = studentRepo.save(existingStudent);
-		    return modelMapper.map(updated, StudentDto.class);
-		}
+	    // Update fields from DTO
+	    existingStudent.setName(updatedStudentDto.getName());
+	    existingStudent.setDept(updatedStudentDto.getDept());
+	    existingStudent.setDob(updatedStudentDto.getDob());
+
+	    Student updated = studentRepo.save(existingStudent);
+	    return modelMapper.map(updated, StudentDto.class);
+	}
 
 
 
