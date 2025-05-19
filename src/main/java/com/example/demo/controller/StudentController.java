@@ -52,9 +52,9 @@ public class StudentController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<StudentDto> updateStudent(@PathVariable("id") long id, @RequestBody Student updatedStudent) {
-	    StudentDto updatedStudentDto = studentService.updateStudent(id, updatedStudent);
-	    return ResponseEntity.ok(updatedStudentDto);
+	public ResponseEntity<StudentDto> updateStudent(@PathVariable("id") long id, @RequestBody StudentDto studentDto) {
+		 StudentDto updatedStudentDto = studentService.updateStudent(id, studentDto);
+		 return ResponseEntity.ok(updatedStudentDto);
 	}
 
 	
